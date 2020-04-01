@@ -1,0 +1,26 @@
+{
+  "name": "action-has-access",
+  "version": "1.0.0",
+  "description": "Action to check access permissions of current user",
+  "main": "lib",
+  "scripts": {
+    "bot": "bot",
+    "lint": "lint",
+    "test": "test-run"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/scherermichael/action-has-access.git"
+  },
+  "author": "Michael Scherer <mail@scherermichael.net>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/scherermichael/action-has-access/issues"
+  },
+  "homepage": "https://github.com/scherermichael/action-has-access#readme",
+  "dependencies": {
+    "@sealsystems/eslint-config-es": "3.6.3",
+    "@sealsystems/mocha": "4.1.4",
+    "@sealsystems/semantic-release": "4.0.22"
+  }
+}
