@@ -1,5 +1,7 @@
 # action-has-permission
 
+Test 2
+
 GitHub Action for checking user's permission to access repository.
 
 It takes a required permission and checks if the user can acess the repository with at least the requested level of permissions. Its output can be used e.g. in [conditions](https://help.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idif) to contol the execution of subsequent steps of a job.
