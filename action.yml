@@ -1,0 +1,13 @@
+name: Has Permission
+description: Check user's permission to access repository
+inputs:
+  required-permission:
+    description: Required permission level (read, write, admin)
+    required: true
+    default: write
+outputs:
+  has-permission:
+    description: Result of permission check
+runs:
+  using: node12
+  main: lib

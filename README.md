@@ -1,3 +1,5 @@
-# action-has-access
+# action-has-permission
 
-Action to check access permissions of current user
+Action for checking user's permission to access repository
+
+## Usage
