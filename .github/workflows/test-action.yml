@@ -9,7 +9,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-
       - name: Cache Node.js modules
         uses: actions/cache@v1
         env:
@@ -17,10 +16,10 @@ jobs:
         with:
           path: ~/.npm
           key: ${{ runner.os }}-${{ env.cache-name }}-12.16.1-${{ hashFiles('**/package-lock.json') }}
-
       - name: Install dependencies
         run: npm ci
 
+      # Check write permission
       - name: Check for write permission
         id: check-write
         uses: ./
@@ -28,16 +27,14 @@ jobs:
           required-permission: "write"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      # Use the output from the `check` step
       - name: Run only if user has sufficent permissions
         if: steps.check-write.outputs.has-permission
         run: echo "Congratulations! Your permissions to access the repository are sufficent."
-
       - name: Run only if user has NOT sufficent permissions
         if: "! steps.check-write.outputs.has-permission"
         run: echo "Sorry! Your permissions are insufficent."
 
+      # Check superuser permission
       - name: Check for test-only-superuser permission
         id: check-superuser
         uses: ./
@@ -46,12 +43,22 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           ADD_TEST_PERMISSION: true
-
-      # Use the output from the `check` step
       - name: Run only if user has sufficent permissions
         if: steps.check-superuser.outputs.has-permission
         run: echo "Congratulations! Your permissions to access the repository are sufficent."
-
       - name: Run only if user has NOT sufficent permissions
         if: "! steps.check-superuser.outputs.has-permission"
+        run: echo "Sorry! Your permissions are insufficent."
+
+      # Check default permission
+      - name: Check for write permission
+        id: check-write
+        uses: ./
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Run only if user has sufficent permissions
+        if: steps.check-write.outputs.has-permission
+        run: echo "Congratulations! Your permissions to access the repository are sufficent."
+      - name: Run only if user has NOT sufficent permissions
+        if: "! steps.check-write.outputs.has-permission"
         run: echo "Sorry! Your permissions are insufficent."
