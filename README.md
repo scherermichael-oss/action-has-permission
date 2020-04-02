@@ -46,6 +46,7 @@ jobs:
     runs-on: ubuntu-latest
     name: A job to check user's permission level
     steps:
+      # Check for write permission
       - name: Check user permission
         id: check
         uses: scherermichael/action-has-permission@master
