@@ -1,3 +1,14 @@
+## 1.0.1 (2020-04-02)
+
+### Bug Fixes
+
+
+#### Correct action main ([ccf7a10](https://github.com/scherermichael/action-has-permission/commit/ccf7a10))
+
+
+
+---
+
 ## 1.0.0 (2020-04-02)
 
 ### Bug Fixes
