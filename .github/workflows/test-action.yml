@@ -51,14 +51,14 @@ jobs:
         run: echo "Sorry! Your permissions are insufficent."
 
       # Check default permission
-      - name: Check for write permission
-        id: check-write
+      - name: Check for default permission
+        id: check-default
         uses: ./
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Run only if user has sufficent permissions
-        if: steps.check-write.outputs.has-permission
+        if: steps.check-default.outputs.has-permission
         run: echo "Congratulations! Your permissions to access the repository are sufficent."
       - name: Run only if user has NOT sufficent permissions
-        if: "! steps.check-write.outputs.has-permission"
+        if: "! steps.check-default.outputs.has-permission"
         run: echo "Sorry! Your permissions are insufficent."
