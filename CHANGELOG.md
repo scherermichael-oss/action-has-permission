@@ -1,3 +1,16 @@
+## 1.0.3 (2020-04-02)
+
+### Chores
+
+
+#### Add implementation notes ([b1d5aee](https://github.com/scherermichael/action-has-permission/commit/b1d5aee))
+
+#### Update Node.js modules ([1dec32d](https://github.com/scherermichael/action-has-permission/commit/1dec32d))
+
+
+
+---
+
 ## 1.0.2 (2020-04-02)
 
 ### Bug Fixes
