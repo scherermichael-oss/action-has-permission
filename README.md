@@ -50,7 +50,7 @@ jobs:
     steps:
       - name: Check user permission
         id: check
-        uses: scherermichael/action-has-permission
+        uses: scherermichael/action-has-permission@master
         with:
           required-permission: write
         env:
