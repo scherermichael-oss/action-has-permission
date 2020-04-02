@@ -10,7 +10,7 @@ It takes a required permission and checks if the user can acess the repository w
 
 The minimal required permission.
 
-Possible values: `"read"`, `"write"`, `"admin"` 
+Possible values: `"read"`, `"write"`, `"admin"`
 
 Default: `"write"`
 
@@ -74,7 +74,7 @@ rm -rf package-lock.json node_modules
 echo "Installing production-related modules..."
 npm install --production
 echo "Committing changes..."
-git add package-lock.json node_modules
+git add -f package-lock.json node_modules
 git commit -m "chore: Update Node.js modules"
 echo "Installing all other modules again..."
 npm install
