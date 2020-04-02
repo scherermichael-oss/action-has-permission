@@ -1,0 +1,22 @@
+on: [push]
+
+jobs:
+  check_user_permission:
+    runs-on: ubuntu-latest
+    name: A job to check user's permission level
+    steps:
+      # To use this repository's private action, you must check out the repository
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Check user permission
+        id: check
+        uses: ./
+        with:
+          required-permission: "write"
+      # Use the output from the `check` step
+      - name: Run only if user has sufficent permissions
+        if: ${{ steps.check.outputs.has-permission }}
+        run: echo "Congratulations! Your permissions to access the repository are sufficent."
+      - name: Run only if user has NOT sufficent permissions
+        if: "! ${{ steps.check.outputs.has-permission }}"
+        run: echo "Sorry! Your permissions are insufficent."
