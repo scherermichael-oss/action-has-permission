@@ -5,6 +5,7 @@
   "scripts": {
     "bot": "bot",
     "lint": "lint",
+    "release": "release",
     "test": "test-run",
     "test:coverage": "test-coverage",
     "test:report": "test-report"
