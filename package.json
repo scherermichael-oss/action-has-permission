@@ -22,10 +22,10 @@
   "homepage": "https://github.com/scherermichael/action-has-permission#readme",
   "dependencies": {
     "@actions/core": "1.2.3",
-    "@actions/github": "2.1.1",
     "@sealsystems/eslint-config-es": "3.6.3",
     "@sealsystems/mocha": "4.1.4",
-    "@sealsystems/semantic-release": "4.0.22"
+    "@sealsystems/semantic-release": "4.0.22",
+    "actions-toolkit": "3.0.1"
   },
   "devDependencies": {
     "proxyquire": "2.1.3",
