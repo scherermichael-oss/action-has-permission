@@ -1,7 +1,5 @@
 # action-has-permission
 
-Test
-
 Action for checking user's permission to access repository.
 
 It takes a required permission and checks if the user can acess the repository with at least the requested level of permissions. Its output can e.g. be used in conditions to contol the execution of subsequent steps of a job.
