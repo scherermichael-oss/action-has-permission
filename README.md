@@ -23,6 +23,8 @@ Action for checking user's permission to access repository
 uses: actions/action-has-permission@v1
 with:
   required-permission: "write"
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
 
 ### More complete example
@@ -37,6 +39,8 @@ check_user_permission:
     uses: actions/action-has-permission@v1
     with:
       required-permission: "write"
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   # Use the output from the `check` step
   - name: Run only if user has sufficent permissions
     if: ${{ steps.check.outputs.has-permission }}

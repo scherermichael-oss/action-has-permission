@@ -26,6 +26,8 @@ jobs:
         uses: ./
         with:
           required-permission: "write"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       # Use the output from the `check` step
       - name: Run only if user has sufficent permissions
