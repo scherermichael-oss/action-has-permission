@@ -29,7 +29,7 @@ jobs:
         # Alpha Release
         uses: cla-assistant/github-action@v1.3.0-alpha
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.CLA_TOKEN }}
         with:
           path-to-signatures: ".signatures/cla-v1.json"
           path-To-cladocument: "https://gist.github.com/scherermichael/f742227dd25c276b2cd9d1c37caf26ba"
