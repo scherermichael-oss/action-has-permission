@@ -25,33 +25,39 @@ Possible values:
 
 ## Example usage
 
-```
+```yaml
 uses: actions/action-has-permission
 with:
-  required-permission: "write"
+  required-permission: write
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
 
 ### More complete example
 
-```
-check_user_permission:
-  runs-on: ubuntu-latest
-  name: A job to check user's permission level
-  steps:
-  - name: Check user permission
-    id: check
-    uses: actions/action-has-permission
-    with:
-      required-permission: "write"
-    env:
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  # Use the output from the `check` step
-  - name: Run only if user has sufficient permissions
-    if: steps.check.outputs.has-permission
-    run: echo "Congratulations! Your permissions to access the repository are sufficient."
-  - name: Run only if user has NOT sufficient permissions
-    if: "! steps.check.outputs.has-permission"
-    run: echo "Sorry! Your permissions are insufficient."
+```yaml
+name: Action Sample
+
+# Run job when a new pull request is opened
+on: [pull_request]
+
+jobs:
+  check_user_permission:
+    runs-on: ubuntu-latest
+    name: A job to check user's permission level
+    steps:
+      - name: Check user permission
+        id: check
+        uses: scherermichael/action-has-permission@master
+        with:
+          required-permission: write
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # Use the output from the `check` step
+      - name: Run only if user has sufficient permissions
+        if: steps.check.outputs.has-permission
+        run: echo "Congratulations! Your permissions to access the repository are sufficient."
+      - name: Run only if user has NOT sufficient permissions
+        if: "! steps.check.outputs.has-permission"
+        run: echo "Sorry! Your permissions are insufficient."
 ```

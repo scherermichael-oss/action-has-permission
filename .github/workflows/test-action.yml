@@ -7,22 +7,10 @@ jobs:
     runs-on: ubuntu-latest
     name: A job to check user's permission level
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Cache Node.js modules
-        uses: actions/cache@v1
-        env:
-          cache-name: cache-node-modules
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-${{ env.cache-name }}-12.16.1-${{ hashFiles('**/package-lock.json') }}
-      - name: Install dependencies
-        run: npm ci
-
       # Check write permission
       - name: Check for write permission
         id: check-write
-        uses: ./
+        uses: scherermichael/action-has-permission@master
         with:
           required-permission: "write"
         env:
@@ -37,7 +25,7 @@ jobs:
       # Check superuser permission
       - name: Check for test-only-superuser permission
         id: check-superuser
-        uses: ./
+        uses: scherermichael/action-has-permission@master
         with:
           required-permission: "test-only-superuser"
         env:
@@ -53,7 +41,7 @@ jobs:
       # Check default permission
       - name: Check for default permission
         id: check-default
-        uses: ./
+        uses: scherermichael/action-has-permission@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Run only if user has sufficent permissions
