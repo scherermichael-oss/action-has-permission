@@ -16,8 +16,10 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          path-to-signatures: "cla-signatures-v1.json"
+          path-to-signatures: "signatures/v1/cla.json"
           path-To-cladocument: "https://gist.github.com/scherermichael/f742227dd25c276b2cd9d1c37caf26ba"
+          # branch should not be protected
           branch: "master"
-          #empty-commit-flag: false
+          whitelist: user1,user2,bot*
+          empty-commit-flag: false
           blockchain-storage-flag: false
