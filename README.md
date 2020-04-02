@@ -26,7 +26,7 @@ Possible values:
 ## Example usage
 
 ```yaml
-uses: actions/action-has-permission
+uses: scherermichael/action-has-permission@master
 with:
   required-permission: write
 env:
