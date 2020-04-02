@@ -10,4 +10,4 @@ outputs:
     description: Result of permission check
 runs:
   using: node12
-  main: bin
+  main: bin/index.js
