@@ -2,7 +2,7 @@
 
 Action for checking user's permission to access repository.
 
-It takes a required permission and checks if the user can acess the repository with at least the requested level of permissions. Its output can e.g. be used in conditions to contol the execution of subsequent steps of a job.
+It takes a required permission and checks if the user can acess the repository with at least the requested level of permissions. Its output can be used e.g. in conditions to contol the execution of subsequent steps of a job.
 
 ## Inputs
 
@@ -36,9 +36,9 @@ env:
 ### More complete example
 
 ```yaml
-name: Action Sample
+name: Action Sample Workflow
 
-# Run job when a new pull request is opened
+# Run workflow when a new pull request is opened
 on: [pull_request]
 
 jobs:
@@ -60,4 +60,22 @@ jobs:
       - name: Run only if user has NOT sufficient permissions
         if: "! steps.check.outputs.has-permission"
         run: echo "Sorry! Your permissions are insufficient."
+```
+
+## Implementation notes
+
+The production-related Node.js modules must be added to this repository to allow the action to run. Modules that are only used for development should **not** be included in order to reduce the number of files.
+
+Run the following commands to update modules correctly:
+
+```sh
+echo "Removing all Node.js modules..."
+rm -rf package-lock.json node_modules
+echo "Install only production-related modules..."
+npm install --production
+echo "Committing changes..."
+git add package-lock.json node_modules
+git commit -m "chore: Update Node.js modules"
+echo "Installing all other modules again..."
+npm install
 ```
