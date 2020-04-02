@@ -1,6 +1,7 @@
 'use strict';
 
 const assert = require('assertthat');
+const { nodeenv } = require('nodeenv');
 const proxyquire = require('proxyquire');
 const sinon = require('sinon');
 
@@ -48,8 +49,34 @@ suite('checkPermission', () => {
 
     const actual = await checkPermissionMock();
 
-    assert.that(actual).is.falsy();
+    assert.that(actual).is.equalTo('');
     assert.that(await setFailedFake.lastArg).is.equalTo('Required permission must be one of: none,read,write,admin');
+  });
+
+  suite('test permission is', () => {
+    test('not added if environment variable "ADD_TEST_PERMISSION" is not given.', async () => {
+      const setFailedFake = sinon.fake();
+
+      sinon.replace(core, 'setFailed', setFailedFake);
+      sinon.replace(core, 'getInput', sinon.fake.returns('invalid'));
+      await checkPermissionMock();
+
+      assert.that(await setFailedFake.lastArg).is.equalTo('Required permission must be one of: none,read,write,admin');
+    });
+
+    test('added if environment variable "ADD_TEST_PERMISSION" is given.', async () => {
+      const restore = nodeenv('ADD_TEST_PERMISSION', 'true');
+      const setFailedFake = sinon.fake();
+
+      sinon.replace(core, 'setFailed', setFailedFake);
+      sinon.replace(core, 'getInput', sinon.fake.returns('invalid'));
+      await checkPermissionMock();
+
+      assert
+        .that(await setFailedFake.lastArg)
+        .is.equalTo('Required permission must be one of: none,read,write,admin,test-only-superuser');
+      restore();
+    });
   });
 
   test('checks collaborator via GitHub API.', async () => {
@@ -64,14 +91,14 @@ suite('checkPermission', () => {
     });
   });
 
-  suite('returns falsy if', () => {
+  suite('returns "" if', () => {
     test('an exception is thrown.', async () => {
       sinon.replace(core, 'getInput', sinon.fake.returns('admin'));
       repos.getCollaboratorPermissionLevel = sinon.fake.throws(new Error('foo'));
 
       const actual = await checkPermissionMock();
 
-      assert.that(actual).is.falsy();
+      assert.that(actual).is.equalTo('');
     });
 
     test('no permission is returned by GitHub.', async () => {
@@ -79,7 +106,7 @@ suite('checkPermission', () => {
 
       const actual = await checkPermissionMock();
 
-      assert.that(actual).is.falsy();
+      assert.that(actual).is.equalTo('');
     });
 
     test('permission of user is below "read".', async () => {
@@ -89,7 +116,7 @@ suite('checkPermission', () => {
       const userPermission = 'none';
       repos.getCollaboratorPermissionLevel = sinon.fake.returns({ data: { permission: userPermission } });
       const actual = await checkPermissionMock();
-      assert.that(actual).is.falsy();
+      assert.that(actual).is.equalTo('');
     });
 
     test('permission of user is below "write".', async () => {
@@ -99,11 +126,11 @@ suite('checkPermission', () => {
 
       userPermission = 'none';
       repos.getCollaboratorPermissionLevel = sinon.fake.returns({ data: { permission: userPermission } });
-      assert.that(await checkPermissionMock()).is.falsy();
+      assert.that(await checkPermissionMock()).is.equalTo('');
 
       userPermission = 'read';
       repos.getCollaboratorPermissionLevel = sinon.fake.returns({ data: { permission: userPermission } });
-      assert.that(await checkPermissionMock()).is.falsy();
+      assert.that(await checkPermissionMock()).is.equalTo('');
     });
 
     test('permission of user is below "admin".', async () => {
@@ -113,15 +140,15 @@ suite('checkPermission', () => {
 
       userPermission = 'none';
       repos.getCollaboratorPermissionLevel = sinon.fake.returns({ data: { permission: userPermission } });
-      assert.that(await checkPermissionMock()).is.falsy();
+      assert.that(await checkPermissionMock()).is.equalTo('');
 
       userPermission = 'read';
       repos.getCollaboratorPermissionLevel = sinon.fake.returns({ data: { permission: userPermission } });
-      assert.that(await checkPermissionMock()).is.falsy();
+      assert.that(await checkPermissionMock()).is.equalTo('');
 
       userPermission = 'write';
       repos.getCollaboratorPermissionLevel = sinon.fake.returns({ data: { permission: userPermission } });
-      assert.that(await checkPermissionMock()).is.falsy();
+      assert.that(await checkPermissionMock()).is.equalTo('');
     });
   });
 
