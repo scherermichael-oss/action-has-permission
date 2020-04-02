@@ -21,5 +21,5 @@ jobs:
           # branch should not be protected
           branch: "master"
           whitelist: user1,user2,bot*
-          empty-commit-flag: false
+          empty-commit-flag: true
           blockchain-storage-flag: false
