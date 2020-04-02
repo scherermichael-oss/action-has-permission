@@ -35,6 +35,6 @@ jobs:
           path-To-cladocument: "https://gist.github.com/scherermichael/f742227dd25c276b2cd9d1c37caf26ba"
           # branch should not be protected
           branch: "master"
-          whitelist: ""
+          whitelist: "dummyuser1,dummyuser2"
           empty-commit-flag: true
           blockchain-storage-flag: false
