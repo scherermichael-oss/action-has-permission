@@ -1,3 +1,14 @@
+## 1.0.1 (2020-04-02)
+
+### Bug Fixes
+
+
+#### Update Readme ([7ae7518](https://github.com/scherermichael/action-has-permission/commit/7ae7518))
+
+
+
+---
+
 ## 1.0.0 (2020-04-02)
 
 ### Bug Fixes
