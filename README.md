@@ -71,7 +71,7 @@ Run the following commands to update modules correctly:
 ```sh
 echo "Removing all Node.js modules..."
 rm -rf package-lock.json node_modules
-echo "Install only production-related modules..."
+echo "Installing production-related modules..."
 npm install --production
 echo "Committing changes..."
 git add package-lock.json node_modules
