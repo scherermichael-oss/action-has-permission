@@ -1,3 +1,14 @@
+## 1.0.2 (2020-04-02)
+
+### Bug Fixes
+
+
+#### Add production modules to repository ([85410d5](https://github.com/scherermichael/action-has-permission/commit/85410d5))
+
+
+
+---
+
 ## 1.0.1 (2020-04-02)
 
 ### Bug Fixes
