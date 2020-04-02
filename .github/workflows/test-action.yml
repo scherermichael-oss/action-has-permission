@@ -7,14 +7,26 @@ jobs:
     runs-on: ubuntu-latest
     name: A job to check user's permission level
     steps:
-      # To use this repository's private action, you must check out the repository
       - name: Checkout
         uses: actions/checkout@v2
+
+      - name: Cache Node.js modules
+        uses: actions/cache@v1
+        env:
+          cache-name: cache-node-modules
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-${{ env.cache-name }}-12.16.1-${{ hashFiles('**/package-lock.json') }}
+
+      - name: Install dependencies
+        run: npm ci
+
       - name: Check user permission
         id: check
         uses: ./
         with:
           required-permission: "write"
+
       # Use the output from the `check` step
       - name: Run only if user has sufficent permissions
         if: ${{ steps.check.outputs.has-permission }}
