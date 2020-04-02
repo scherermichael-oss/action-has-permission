@@ -15,7 +15,8 @@ Action for checking user's permission to access repository
 
 ### `has-permission`
 
-`true` if user has required permission. `false` otherwise.
+- `"1"` if user has required permission, which evaluates to `true` in a GitHub Actions condition.
+- `""` otherwise, which evaluates to `false`.
 
 ## Example usage
 
@@ -43,9 +44,9 @@ check_user_permission:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   # Use the output from the `check` step
   - name: Run only if user has sufficent permissions
-    if: ${{ steps.check.outputs.has-permission }}
+    if: steps.check.outputs.has-permission
     run: echo "Congratulations! Your permissions to access the repository are sufficent."
   - name: Run only if user has NOT sufficent permissions
-    if: "! ${{ steps.check.outputs.has-permission }}"
+    if: "! steps.check.outputs.has-permission"
     run: echo "Sorry! Your permissions are insufficent."
 ```
