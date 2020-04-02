@@ -45,6 +45,7 @@ jobs:
           required-permission: "test-only-superuser"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ADD_TEST_PERMISSION: true
 
       # Use the output from the `check` step
       - name: Run only if user has sufficent permissions
