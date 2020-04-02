@@ -48,10 +48,10 @@ check_user_permission:
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   # Use the output from the `check` step
-  - name: Run only if user has sufficent permissions
+  - name: Run only if user has sufficient permissions
     if: steps.check.outputs.has-permission
-    run: echo "Congratulations! Your permissions to access the repository are sufficent."
-  - name: Run only if user has NOT sufficent permissions
+    run: echo "Congratulations! Your permissions to access the repository are sufficient."
+  - name: Run only if user has NOT sufficient permissions
     if: "! steps.check.outputs.has-permission"
-    run: echo "Sorry! Your permissions are insufficent."
+    run: echo "Sorry! Your permissions are insufficient."
 ```
