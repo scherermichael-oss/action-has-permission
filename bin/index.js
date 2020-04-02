@@ -5,5 +5,5 @@ const core = require('@actions/core');
 const checkPermission = require('../lib/checkPermission');
 
 (async () => {
-  core.setOutput('hasPermission', await checkPermission());
+  core.setOutput('has-permission', await checkPermission());
 })();
