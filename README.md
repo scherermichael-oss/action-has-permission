@@ -26,7 +26,7 @@ Possible values:
 ## Example usage
 
 ```yaml
-uses: scherermichael/action-has-permission@master
+uses: scherermichael-oss/action-has-permission@master
 with:
   required-permission: write
 env:
@@ -49,7 +49,7 @@ jobs:
       # Check for write permission
       - name: Check user permission
         id: check
-        uses: scherermichael/action-has-permission@master
+        uses: scherermichael-oss/action-has-permission@master
         with:
           required-permission: write
         env:
