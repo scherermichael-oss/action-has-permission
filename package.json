@@ -1,6 +1,6 @@
 {
   "name": "action-has-permission",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Action for checking user's permission to access repository",
   "scripts": {
     "bot": "bot",

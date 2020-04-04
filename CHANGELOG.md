@@ -1,3 +1,14 @@
+## 1.0.4 (2020-04-04)
+
+### Bug Fixes
+
+
+#### Update repository name in readme file ([0d8d73d](https://github.com/scherermichael-oss/action-has-permission/commit/0d8d73d))
+
+
+
+---
+
 ## 1.0.3 (2020-04-02)
 
 ### Chores
