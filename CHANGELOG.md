@@ -1,3 +1,14 @@
+## 1.0.5 (2020-04-04)
+
+### Chores
+
+
+#### Bump actions-toolkit from 3.0.1 to 4.0.0 ([#18](https://github.com/scherermichael-oss/action-has-permission/issues/18)) ([1ae1455](https://github.com/scherermichael-oss/action-has-permission/commit/1ae1455))
+
+
+
+---
+
 ## 1.0.4 (2020-04-04)
 
 ### Bug Fixes
