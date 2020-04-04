@@ -12,14 +12,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/scherermichael/action-has-permission.git"
+    "url": "git+https://github.com/scherermichael-oss/action-has-permission.git"
   },
   "author": "Michael Scherer <mail@scherermichael.net>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/scherermichael/action-has-permission/issues"
+    "url": "https://github.com/scherermichael-oss/action-has-permission/issues"
   },
-  "homepage": "https://github.com/scherermichael/action-has-permission#readme",
+  "homepage": "https://github.com/scherermichael-oss/action-has-permission#readme",
   "dependencies": {
     "@actions/core": "1.2.3",
     "actions-toolkit": "3.0.1",
