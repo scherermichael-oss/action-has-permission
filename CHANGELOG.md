@@ -1,3 +1,14 @@
+## 1.0.6 (2020-04-09)
+
+### Chores
+
+
+#### Bump sinon from 9.0.1 to 9.0.2 ([18ec911](https://github.com/scherermichael-oss/action-has-permission/commit/18ec911))
+
+
+
+---
+
 ## 1.0.5 (2020-04-04)
 
 ### Chores
