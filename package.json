@@ -22,7 +22,7 @@
   "homepage": "https://github.com/scherermichael-oss/action-has-permission#readme",
   "dependencies": {
     "@actions/core": "1.2.3",
-    "actions-toolkit": "4.0.0",
+    "actions-toolkit": "6.0.1",
     "getenv": "1.0.0"
   },
   "devDependencies": {
