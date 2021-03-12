@@ -26,7 +26,7 @@
     "getenv": "1.0.0"
   },
   "devDependencies": {
-    "@sealsystems/eslint-config-es": "3.6.3",
+    "@sealsystems/eslint-config-es": "3.6.5",
     "@sealsystems/mocha": "4.1.4",
     "@sealsystems/semantic-release": "4.0.22",
     "nodeenv": "3.0.44",
