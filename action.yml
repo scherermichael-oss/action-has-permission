@@ -1,6 +1,9 @@
 name: Has Permission
 description: Check user's permission to access repository
 inputs:
+  username:
+    required: false
+    description: 'username (Default: github.actor)'
   required-permission:
     description: Required permission level (read, write, admin)
     required: true

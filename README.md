@@ -14,6 +14,12 @@ Possible values: `"read"`, `"write"`, `"admin"`
 
 Default: `"write"`
 
+### `username`
+
+The github login for the user you want to check permissions on. 
+
+Example: `"john-doe"`
+Default: `"github.actor"`
 ## Outputs
 
 ### `has-permission`
@@ -29,6 +35,7 @@ Possible values:
 uses: scherermichael-oss/action-has-permission@master
 with:
   required-permission: write
+  username: john-doe #default: github.actor
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
@@ -52,6 +59,7 @@ jobs:
         uses: scherermichael-oss/action-has-permission@master
         with:
           required-permission: write
+          username: john-doe #default: github.actor
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       # Use the output from the `check` step
